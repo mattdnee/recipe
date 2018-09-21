@@ -6,5 +6,25 @@
 </head>
 <body>
     <h1>My Awesome Recipes!</h1>
+    <table>
+        <thead>
+            <th>Recipe Name</th>
+            <th>Ingredients</th>
+        </thead>
+        <tbody>
+            <tr th:each="recipe : ${recipes}">
+                <td th:text="${recipe.getDescription()}">recipe name</td>
+                <td>
+                    <ul>
+                        <li th:each="ingredient : ${recipe.getIngredients()}">
+                            <span th:text="${ingredient.amount}" />&nbsp;
+                            <span th:text="${ingredient?.unitOfMeasure?.description}" />&nbsp;
+                            <span th:text="${ingredient.name}" />
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
